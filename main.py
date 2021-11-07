@@ -1,4 +1,4 @@
-# PIMS/main.py
+# main.py
 #
 # Copyright (c) 2021 Дмитрий Кузнецов
 #
