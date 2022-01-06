@@ -60,6 +60,7 @@ async def main(id: int, response: Response) -> Optional[Dict]:
         Response in JSON-format if ID is valid, None otherwise.
     """
     try:
+        session.begin()
         person: PersonInfo = session.query(PersonInfo).filter(PersonInfo.id == id)[0]
         data: Dict = {
             'id': person.id,
@@ -68,6 +69,7 @@ async def main(id: int, response: Response) -> Optional[Dict]:
             'name': person.name,
             'surname': person.surname
         }
+        session.close()
         return data
     except IndexError:
         response.status_code = status.HTTP_400_BAD_REQUEST
