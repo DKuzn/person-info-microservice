@@ -32,7 +32,7 @@ from typing import List
 import os
 
 DATABASE_URL: str = os.environ['DATABASE_URL'].replace('postgres://', 'postgresql://')
-engine = create_engine(DATABASE_URL)
+engine = create_engine(DATABASE_URL, pool_pre_ping=True)
 Session = sessionmaker(bind=engine)
 
 
