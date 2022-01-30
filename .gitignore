@@ -2,3 +2,6 @@
 /__pycache__
 /.vscode
 /VGGFace2-database
+/build
+/dist
+/PIMS.egg-info
