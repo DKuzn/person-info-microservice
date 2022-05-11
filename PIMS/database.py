@@ -25,7 +25,7 @@ Note:
     Set the environment variable DATABASE_URL to correct work of this module.
 """
 
-from sqlalchemy import Column, Integer, String, PickleType, create_engine
+from sqlalchemy import Column, Integer, Text, PickleType, create_engine
 from sqlalchemy.ext.declarative import declarative_base, DeclarativeMeta
 from sqlalchemy.orm import sessionmaker
 from typing import List
@@ -57,10 +57,10 @@ class PersonInfo(Base):
     """
     __tablename__ = 'person_info'
     id: int = Column(Integer, primary_key=True, autoincrement=True)
-    image: str = Column(String)
+    image: str = Column(Text)
     bbox: List[int] = Column(PickleType)
-    name: str = Column(String)
-    surname: str = Column(String)
+    name: str = Column(Text)
+    surname: str = Column(Text)
 
     def __init__(self, image: str, bbox: List[int], name: str, surname: str) -> None:
         self.image = image
