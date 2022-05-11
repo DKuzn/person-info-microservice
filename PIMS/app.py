@@ -29,6 +29,7 @@ Example:
 
 from fastapi import FastAPI, Response, status
 from fastapi.middleware.cors import CORSMiddleware
+from sqlalchemy.exc import InvalidRequestError
 from PIMS import __version__
 from PIMS.datamodels import ResponseModel
 from PIMS.database import PersonInfo, Session
@@ -73,4 +74,8 @@ async def main(id: int, response: Response) -> Optional[Dict]:
         return data
     except IndexError:
         response.status_code = status.HTTP_400_BAD_REQUEST
+        return None
+    
+    except InvalidRequestError:
+        session.close()
         return None
