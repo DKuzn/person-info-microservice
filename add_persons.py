@@ -23,7 +23,7 @@ Example:
     >>> python add_persons.py path/to/dataset path/to/metadata.csv
 """
 
-from PIMS.database import PersonInfo, Session, create_table
+from PIMS.database import PersonInfo, get_connection, create_table
 from facenet_pytorch import MTCNN
 from PIL import Image
 import pandas as pd
@@ -73,7 +73,7 @@ def fill_database(path_to_dataset: str, path_to_metadata: str) -> None:
             thresholds=[0.6, 0.7, 0.7], factor=0.709, post_process=True,
             device=torch.device('cpu')
         )
-    session: Session = Session()
+    session, _ = get_connection()
     names: pd.DataFrame = pd.read_csv(path_to_metadata)
     for idx, i in tqdm(enumerate(names['Name']), total=len(names['Name'])):
         long_name: List[str] = i.split('_')
