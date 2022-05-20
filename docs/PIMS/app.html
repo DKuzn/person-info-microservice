@@ -61,7 +61,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.exc import InvalidRequestError
 from PIMS import __version__
 from PIMS.datamodels import ResponseModel
-from PIMS.database import PersonInfo, Session
+from PIMS.database import PersonInfo, get_connection
 from typing import List, Dict, Optional
 
 app: FastAPI = FastAPI(title=&#39;Person Info Microservice&#39;, version=__version__)
@@ -76,7 +76,7 @@ app.add_middleware(
     allow_headers=[&#34;*&#34;],
 )
 
-session = Session()
+session, _ = get_connection()
 
 
 @app.get(&#39;/{id}&#39;, response_model=ResponseModel)
