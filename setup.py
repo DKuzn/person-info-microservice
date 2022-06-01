@@ -6,7 +6,7 @@ setup(
     version=__version__,
     packages=['PIMS'],
     url='https://github.com/DKuzn/person-info-microservice',
-    license='MIT',
+    license='GPLv3',
     author='Dmitry Kuznetsov',
     author_email='DKuznetsov2000@outlook.com',
     description='Microservice for getting person info during face recognition',
