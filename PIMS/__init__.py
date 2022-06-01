@@ -19,4 +19,4 @@
 This package contains the microservice for person info getting.
 """
 
-__version__: str = '1.2.0'
+__version__: str = '1.2.1'
